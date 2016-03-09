@@ -43,3 +43,17 @@
     - redhat
 
 ###################################################################################################
+
+- name: download
+
+  get_url: url={{ consul_server_zip_src_url   }}
+     sha256sum={{ consul_server_zip_sha256sum }}
+          dest={{ consul_server_zip_dest_path }}
+
+  tags:
+    - asteria
+    - hashicorp
+    - consul
+    - server
+
+###################################################################################################
