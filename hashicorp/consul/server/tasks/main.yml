@@ -9,3 +9,37 @@
     - server
 
 ###################################################################################################
+
+- name: debian | dependencies
+
+  when: ansible_os_family | lower == 'debian'
+
+  with_items: consul_server_dependencies
+
+  apt : name={{ item }} state=present install_recommends=false
+
+  tags:
+    - asteria
+    - hashicorp
+    - consul
+    - server
+    - debian
+
+###################################################################################################
+
+- name: redhat | dependencies
+
+  when: ansible_os_family | lower == 'redhat'
+
+  with_items: consul_server_dependencies
+
+  yum : name={{ item }} state=present
+
+  tags:
+    - asteria
+    - hashicorp
+    - consul
+    - server
+    - redhat
+
+###################################################################################################
