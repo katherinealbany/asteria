@@ -1,6 +1,13 @@
 ###################################################################################################
 
-- include: verify.yml
+- name: verify | setup
+
+  assert:
+    that:
+
+      - module_setup is defined
+      - module_setup is not none
+      - module_setup
 
   tags:
     - asteria
