@@ -44,7 +44,19 @@
 
 ###################################################################################################
 
-- name: download
+- name: zip | base
+
+  file: dest={{ consul_server_zip_dest_base }} state=directory
+
+  tags:
+    - asteria
+    - hashicorp
+    - consul
+    - server
+
+###################################################################################################
+
+- name: zip | download
 
   get_url: url={{ consul_server_zip_src_url   }}
      sha256sum={{ consul_server_zip_sha256sum }}
