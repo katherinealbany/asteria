@@ -1,36 +1,38 @@
 ###################################################################################################
 
-consul_server_name: consul
+consul_server_word: consul
 
 ###################################################################################################
 
 consul_server_support:
 
-  - linux-x86_64
+   - linux-x86_64
 
 ###################################################################################################
 
 consul_server_dependencies:
 
-  - unzip
+   - unzip
 
 ###################################################################################################
 
 consul_server_major   : 0
 consul_server_minor   : 6
 consul_server_revision: 3
+consul_server_version : '{{ consul_server_major }}.{{ consul_server_minor }}.{{ consul_server_revision }}'
 
 ###################################################################################################
 
-consul_server_version: '{{ consul_server_major }}.{{ consul_server_minor }}.{{ consul_server_revision }}'
+consul_server_platform    : '{{ ansible_system | lower }}'
+consul_server_architecture: '{{ architecture_mapping[ansible_architecture | lower] }}'
 
 ###################################################################################################
 
-consul_server_zip_filename : '{{ consul_server_name }}_{{ consul_server_version }}_{{ ansible_system | lower }}_amd64.zip'
+consul_server_zip_filename : '{{ consul_server_word }}_{{ consul_server_version }}_{{ consul_server_platform }}_{{ consul_server_architecture }}.zip'
 consul_server_zip_sha256sum: b0532c61fec4a4f6d130c893fd8954ec007a6ad93effbe283a39224ed237e250
 
 consul_server_zip_src_base : https://releases.hashicorp.com
-consul_server_zip_src_infix: '{{ consul_server_name }}/{{ consul_server_version }}'
+consul_server_zip_src_infix: '{{ consul_server_word }}/{{ consul_server_version }}'
 consul_server_zip_src_url  : '{{ consul_server_zip_src_base }}/{{ consul_server_zip_src_infix }}/{{ consul_server_zip_filename }}'
 
 consul_server_zip_dest_base: /usr/local/bin
