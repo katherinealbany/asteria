@@ -7,11 +7,4 @@
 
       - '"{{ consul_server_platform }}-{{ consul_server_architecture }}" in consul_server_support'
 
-  tags:
-    - asteria
-    - hashicorp
-    - consul
-    - server
-    - verify
-
 ###################################################################################################

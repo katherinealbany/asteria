@@ -7,83 +7,28 @@
     - hashicorp
     - consul
     - server
+    - verify
 
 ###################################################################################################
 
-- name: debian | dependencies
-
-  when: shared_os_family == 'debian'
-
-  with_items: consul_server_dependencies
-
-  apt : name={{ item }} state=present install_recommends=false
+- include: dependencies.yml
 
   tags:
     - asteria
     - hashicorp
     - consul
     - server
-    - debian
+    - dependencies
 
 ###################################################################################################
 
-- name: redhat | dependencies
-
-  when: shared_os_family == 'redhat'
-
-  with_items: consul_server_dependencies
-
-  yum : name={{ item }} state=present
+- include: download.yml
 
   tags:
     - asteria
     - hashicorp
     - consul
     - server
-    - redhat
-
-###################################################################################################
-
-- name: home | touch
-
-  file: dest={{ consul_server_home  }}
-       owner={{ consul_server_user  }}
-       group={{ consul_server_group }}
-        mode={{ consul_server_mode  }}
-       state=directory
-
-  tags:
-    - asteria
-    - hashicorp
-    - consul
-    - server
-
-###################################################################################################
-
-- name: zip | base
-
-  file: dest={{ consul_server_zip_dest_base }} state=directory
-
-  tags:
-    - asteria
-    - hashicorp
-    - consul
-    - server
-
-###################################################################################################
-
-- name: zip | download
-
-  sudo_user: '{{ consul_server_user }}'
-
-  get_url: url={{ consul_server_zip_src_url   }}
-     sha256sum={{ consul_server_zip_sha256sum }}
-          dest={{ consul_server_zip_dest_path }}
-
-  tags:
-    - asteria
-    - hashicorp
-    - consul
-    - server
+    - download
 
 ###################################################################################################

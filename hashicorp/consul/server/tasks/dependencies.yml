@@ -1,0 +1,27 @@
+###################################################################################################
+
+- name: dependencies | debian
+
+  when: shared_os_family == 'debian'
+
+  with_items: consul_server_dependencies
+
+  apt : name={{ item }} state=present install_recommends=false
+
+  tags:
+    - debian
+
+###################################################################################################
+
+- name: dependencies | redhat
+
+  when: shared_os_family == 'redhat'
+
+  with_items: consul_server_dependencies
+
+  yum : name={{ item }} state=present
+
+  tags:
+    - redhat
+
+###################################################################################################

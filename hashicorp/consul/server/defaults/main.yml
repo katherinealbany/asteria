@@ -4,10 +4,8 @@ consul_server_word: consul
 
 ###################################################################################################
 
-consul_server_user : '{{ consul_server_word }}'
-consul_server_group: '{{ consul_server_user }}'
-consul_server_home : /home/{{ consul_server_user }}
-consul_server_mode : g-rwx,o-rwx
+consul_server_user: '{{ consul_server_word }}'
+consul_server_home: /home/{{ consul_server_user }}
 
 ###################################################################################################
 
@@ -35,18 +33,18 @@ consul_server_architecture: '{{ shared_architecture_mapped }}'
 
 ###################################################################################################
 
-consul_server_zip_filename : '{{ consul_server_word }}_{{ consul_server_version }}_{{ consul_server_platform }}_{{ consul_server_architecture }}.zip'
-consul_server_zip_sha256sum: b0532c61fec4a4f6d130c893fd8954ec007a6ad93effbe283a39224ed237e250
+consul_server_archive_filename : '{{ consul_server_word }}_{{ consul_server_version }}_{{ consul_server_platform }}_{{ consul_server_architecture }}.zip'
+consul_server_archive_sha256sum: b0532c61fec4a4f6d130c893fd8954ec007a6ad93effbe283a39224ed237e250
 
 ###################################################################################################
 
-consul_server_zip_src_base : https://releases.hashicorp.com
-consul_server_zip_src_infix: '{{ consul_server_word }}/{{ consul_server_version }}'
-consul_server_zip_src_url  : '{{ consul_server_zip_src_base }}/{{ consul_server_zip_src_infix }}/{{ consul_server_zip_filename }}'
+consul_server_archive_src_base : https://releases.hashicorp.com
+consul_server_archive_src_infix: '{{ consul_server_word }}/{{ consul_server_version }}'
+consul_server_archive_src_url  : '{{ consul_server_archive_src_base }}/{{ consul_server_archive_src_infix }}/{{ consul_server_archive_filename }}'
 
 ###################################################################################################
 
-consul_server_zip_dest_base: '{{ consul_server_home }}'
-consul_server_zip_dest_path: '{{ consul_server_zip_dest_base }}/{{ consul_server_zip_filename }}'
+consul_server_archive_dest_base: '{{ consul_server_home }}/archive'
+consul_server_archive_dest_path: '{{ consul_server_archive_dest_base }}/{{ consul_server_archive_filename }}'
 
 ###################################################################################################

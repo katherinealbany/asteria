@@ -1,0 +1,19 @@
+###################################################################################################
+
+- name: download | touch
+
+  sudo_user: '{{ consul_server_user }}'
+
+  file: dest={{ consul_server_archive_dest_base }} state=directory
+
+###################################################################################################
+
+- name: download | archive
+
+  sudo_user: '{{ consul_server_user }}'
+
+  get_url: url={{ consul_server_archive_src_url   }}
+     sha256sum={{ consul_server_archive_sha256sum }}
+          dest={{ consul_server_archive_dest_path }}
+
+###################################################################################################
