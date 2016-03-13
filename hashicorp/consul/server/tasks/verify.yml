@@ -23,7 +23,6 @@
   assert:
     that:
 
-      - consul_server_support is iterable
       - '"{{ ansible_system | lower }}-{{ ansible_architecture | lower }}" in consul_server_support | lower'
 
   tags:
