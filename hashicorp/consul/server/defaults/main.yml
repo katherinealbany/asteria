@@ -4,8 +4,10 @@ consul_server_word: consul
 
 ###################################################################################################
 
-consul_server_user: '{{ consul_server_word }}'
-consul_server_home: /home/{{ consul_server_user }}
+consul_server_user : '{{ consul_server_word }}'
+consul_server_group: '{{ consul_server_user }}'
+consul_server_home : /home/{{ consul_server_user }}
+consul_server_mode : g-rwx,o-rwx
 
 ###################################################################################################
 
@@ -44,7 +46,7 @@ consul_server_zip_src_url  : '{{ consul_server_zip_src_base }}/{{ consul_server_
 
 ###################################################################################################
 
-consul_server_zip_dest_base: /usr/lib/{{ consul_server_word }}
+consul_server_zip_dest_base: '{{ consul_server_home }}'
 consul_server_zip_dest_path: '{{ consul_server_zip_dest_base }}/{{ consul_server_zip_filename }}'
 
 ###################################################################################################

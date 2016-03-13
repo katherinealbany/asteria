@@ -51,11 +51,24 @@
 
 - name: user
 
-  user: name={{  user_name    }}
-       group={{  user_group   }}
-     comment='{{ user_comment }}'
-        home={{  user_home    }}
-       shell={{  user_shell   }}
+  user:  name={{ user_name  }}
+        group={{ user_group }}
+        shell={{ user_shell }}
+   createhome=no
+
+  tags:
+    - asteria
+    - user
+
+###################################################################################################
+
+- name: home
+
+  file: dest={{ user_home  }}
+       owner={{ user_name  }}
+       group={{ user_group }}
+        mode={{ user_mode  }}
+       state=directory
 
   tags:
     - asteria

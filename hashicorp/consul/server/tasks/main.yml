@@ -44,6 +44,22 @@
 
 ###################################################################################################
 
+- name: home | touch
+
+  file: dest={{ consul_server_home  }}
+       owner={{ consul_server_user  }}
+       group={{ consul_server_group }}
+        mode={{ consul_server_mode  }}
+       state=directory
+
+  tags:
+    - asteria
+    - hashicorp
+    - consul
+    - server
+
+###################################################################################################
+
 - name: zip | base
 
   file: dest={{ consul_server_zip_dest_base }} state=directory
@@ -57,6 +73,8 @@
 ###################################################################################################
 
 - name: zip | download
+
+  sudo_user: '{{ consul_server_user }}'
 
   get_url: url={{ consul_server_zip_src_url   }}
      sha256sum={{ consul_server_zip_sha256sum }}
