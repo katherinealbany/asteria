@@ -24,7 +24,7 @@ consul_server_version : '{{ consul_server_major }}.{{ consul_server_minor }}.{{ 
 ###################################################################################################
 
 consul_server_platform    : '{{ ansible_system | lower }}'
-consul_server_architecture: '{{ architecture_mapping[ansible_architecture | lower] }}'
+consul_server_architecture: '{{ shared_architecture_mapping[ansible_architecture | lower] }}'
 
 ###################################################################################################
 
