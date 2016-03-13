@@ -2,10 +2,10 @@
 
 dependencies:
 
-  -   role: asteria/shared/facts
-
   - { role: asteria/user,
       user_name: '{{ consul_server_user }}' ,
       user_home: '{{ consul_server_home }}' }
+
+  -   role: asteria/shared
 
 ###################################################################################################
