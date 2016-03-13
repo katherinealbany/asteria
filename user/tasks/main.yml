@@ -1,0 +1,64 @@
+###################################################################################################
+
+- name: verify
+
+  assert:
+    that:
+
+      - user_name is defined
+      - user_name is not none
+      - user_name | length > 0
+
+  tags:
+    - asteria
+    - user
+
+###################################################################################################
+
+- name: base | discover
+
+  shell: dirname {{ user_home }}
+
+  changed_when: false
+
+  register: base
+
+  tags:
+    - asteria
+    - user
+
+###################################################################################################
+
+- name: base | touch
+
+  file: dest={{ base.stdout }} state=directory
+
+  tags:
+    - asteria
+    - user
+
+###################################################################################################
+
+- name: group
+
+  group: name={{ user_group }}
+
+  tags:
+    - asteria
+    - user
+
+###################################################################################################
+
+- name: user
+
+  user: name={{  user_name    }}
+       group={{  user_group   }}
+     comment='{{ user_comment }}'
+        home={{  user_home    }}
+       shell={{  user_shell   }}
+
+  tags:
+    - asteria
+    - user
+
+###################################################################################################

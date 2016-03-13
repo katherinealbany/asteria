@@ -1,11 +1,8 @@
 ###################################################################################################
 
-dependencies:
-
-  -   role: asteria/shared/facts
-
-  - { role: asteria/user,
-      user_name: '{{ consul_server_user }}' ,
-      user_home: '{{ consul_server_home }}' }
+user_home   : /home/{{ user_name }}
+user_group  : '{{ user_name }}'
+user_shell  : /bin/false
+user_comment:
 
 ###################################################################################################
