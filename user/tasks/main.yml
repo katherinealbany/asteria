@@ -9,6 +9,10 @@
       - user_name is not none
       - user_name | length > 0
 
+      - user_home is defined
+      - user_home is not none
+      - user_home | length > 0
+
   tags:
     - asteria
     - user

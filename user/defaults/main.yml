@@ -1,6 +1,5 @@
 ###################################################################################################
 
-user_home : /home/{{ user_name }}
 user_group: '{{ user_name }}'
 user_shell: /bin/false
 user_mode : g-rwx,o-rwx

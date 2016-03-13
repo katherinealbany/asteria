@@ -5,7 +5,7 @@ consul_server_word: consul
 ###################################################################################################
 
 consul_server_user: '{{ consul_server_word }}'
-consul_server_home: /home/{{ consul_server_user }}
+consul_server_home: '{{ shared_home }}/{{ consul_server_user }}'
 
 ###################################################################################################
 
