@@ -12,7 +12,7 @@
 
 - name: debian | dependencies
 
-  when: ansible_os_family | lower == 'debian'
+  when: shared_os_family == 'debian'
 
   with_items: consul_server_dependencies
 
@@ -29,7 +29,7 @@
 
 - name: redhat | dependencies
 
-  when: ansible_os_family | lower == 'redhat'
+  when: shared_os_family == 'redhat'
 
   with_items: consul_server_dependencies
 

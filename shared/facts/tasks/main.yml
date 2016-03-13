@@ -1,8 +1,17 @@
 ###################################################################################################
 
-shared_architecture_mapping:
+- name: verify
 
-  amd64 : x86_64
-  x86_64: amd64
+  assert:
+    that:
+
+      - module_setup is defined
+      - module_setup is not none
+      - module_setup
+
+  tags:
+    - asteria
+    - shared
+    - facts
 
 ###################################################################################################

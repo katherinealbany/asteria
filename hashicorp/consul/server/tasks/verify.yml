@@ -1,29 +1,11 @@
 ###################################################################################################
 
-- name: verify | setup
+- name: verify
 
   assert:
     that:
 
-      - module_setup is defined
-      - module_setup is not none
-      - module_setup
-
-  tags:
-    - asteria
-    - hashicorp
-    - consul
-    - server
-    - verify
-
-###################################################################################################
-
-- name: verify | support
-
-  assert:
-    that:
-
-      - '"{{ ansible_system | lower }}-{{ ansible_architecture | lower }}" in consul_server_support | lower'
+      - '"{{ consul_server_platform }}-{{ consul_server_architecture }}" in consul_server_support'
 
   tags:
     - asteria

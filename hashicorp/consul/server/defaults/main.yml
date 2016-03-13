@@ -6,7 +6,7 @@ consul_server_word: consul
 
 consul_server_support:
 
-  - linux-x86_64
+  - linux-amd64
 
 ###################################################################################################
 
@@ -23,8 +23,8 @@ consul_server_version : '{{ consul_server_major }}.{{ consul_server_minor }}.{{ 
 
 ###################################################################################################
 
-consul_server_platform    : '{{ ansible_system | lower }}'
-consul_server_architecture: '{{ shared_architecture_mapping[ansible_architecture | lower] }}'
+consul_server_platform    : '{{ shared_system }}'
+consul_server_architecture: '{{ shared_architecture_mapped }}'
 
 ###################################################################################################
 
