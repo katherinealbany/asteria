@@ -19,6 +19,29 @@
 
 ###################################################################################################
 
+- name: group
+
+  group: name={{ user_group }}
+
+  tags:
+    - asteria
+    - user
+
+###################################################################################################
+
+- name: user
+
+  user:  name={{ user_name  }}
+        group={{ user_group }}
+        shell={{ user_shell }}
+   createhome=no
+
+  tags:
+    - asteria
+    - user
+
+###################################################################################################
+
 - name: base | discover
 
   shell: dirname {{ user_home }}
@@ -36,29 +59,6 @@
 - name: base | touch
 
   file: dest={{ base.stdout }} state=directory
-
-  tags:
-    - asteria
-    - user
-
-###################################################################################################
-
-- name: group
-
-  group: name={{ user_group }}
-
-  tags:
-    - asteria
-    - user
-
-###################################################################################################
-
-- name: user
-
-  user:  name={{ user_name  }}
-        group={{ user_group }}
-        shell={{ user_shell }}
-   createhome=no
 
   tags:
     - asteria
