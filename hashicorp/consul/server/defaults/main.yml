@@ -44,7 +44,15 @@ consul_server_archive_src_url  : '{{ consul_server_archive_src_base }}/{{ consul
 
 ###################################################################################################
 
-consul_server_archive_dest_base: '{{ consul_server_home }}/archive'
+consul_server_archive_dest_base: '{{ consul_server_home }}/download'
 consul_server_archive_dest_path: '{{ consul_server_archive_dest_base }}/{{ consul_server_archive_filename }}'
+
+###################################################################################################
+
+consul_server_install_base: '{{ consul_server_home }}/bin'
+
+###################################################################################################
+
+consul_server_bin_path: '{{ consul_server_install_base }}/{{ consul_server_word }}'
 
 ###################################################################################################

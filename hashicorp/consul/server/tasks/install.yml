@@ -1,0 +1,18 @@
+###################################################################################################
+
+- name: install | touch
+
+  sudo_user: '{{ consul_server_user }}'
+
+  file: dest={{ consul_server_install_base }} state=directory
+
+###################################################################################################
+
+- name: install | extract
+
+  unarchive: src={{ consul_server_archive_dest_path }}
+            dest={{ consul_server_install_base      }}
+         creates={{ consul_server_bin_path          }}
+            copy=no
+
+###################################################################################################
