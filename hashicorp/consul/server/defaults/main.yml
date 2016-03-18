@@ -56,3 +56,12 @@ consul_server_install_base: '{{ consul_server_home }}/bin'
 consul_server_bin_path: '{{ consul_server_install_base }}/{{ consul_server_word }}'
 
 ###################################################################################################
+
+consul_server_data_base: '{{ consul_server_home }}/data'
+
+consul_server_config_base: '{{ consul_server_home }}/etc'
+consul_server_config_file: config.json
+consul_server_config_src : '{{ consul_server_config_file }}.j2'
+consul_server_config_dest: '{{ consul_server_config_base }}/{{ consul_server_config_file }}'
+
+###################################################################################################

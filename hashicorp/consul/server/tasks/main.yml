@@ -43,3 +43,48 @@
     - install
 
 ###################################################################################################
+
+- name: data | touch
+
+  sudo_user: '{{ consul_server_user }}'
+
+  file: dest={{ consul_server_data_base }} state=directory
+
+  tags:
+    - asteria
+    - hashicorp
+    - consul
+    - server
+
+###################################################################################################
+
+- name: config | touch
+
+  sudo_user: '{{ consul_server_user }}'
+
+  file: dest={{ consul_server_config_base }} state=directory
+
+  tags:
+    - asteria
+    - hashicorp
+    - consul
+    - server
+
+###################################################################################################
+
+- name: config | configure
+
+  sudo_user: '{{ consul_server_user }}'
+
+  template: src={{ consul_server_config_src  }}
+           dest={{ consul_server_config_dest }}
+
+  register: config
+
+  tags:
+    - asteria
+    - hashicorp
+    - consul
+    - server
+
+###################################################################################################
