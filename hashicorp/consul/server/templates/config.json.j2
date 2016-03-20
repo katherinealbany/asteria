@@ -1,5 +1,7 @@
 {
   "server": true,
-  "node_name": "{{ inventory_hostname }}",
-  "data_dir": "{{ consul_server_data_base }}"
+  "data_dir": "{{ consul_server_data_base }}",
+  "node_name": "{{ ansible_fqdn }}",
+  "bind_addr": "{{ ansible_default_ipv4.address }}",
+  "datacenter": "dc1"
 }

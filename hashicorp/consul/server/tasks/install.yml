@@ -10,6 +10,8 @@
 
 - name: install | extract
 
+  sudo_user: '{{ consul_server_user }}'
+
   unarchive: src={{ consul_server_archive_dest_path }}
             dest={{ consul_server_install_base      }}
          creates={{ consul_server_bin_path          }}

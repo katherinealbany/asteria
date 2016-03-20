@@ -1,13 +1,8 @@
 ###################################################################################################
 
-- name: verify
+- name: setup
 
-  assert:
-    that:
-
-      - module_setup is defined
-      - module_setup is not none
-      - module_setup
+  setup:
 
   tags:
     - asteria
