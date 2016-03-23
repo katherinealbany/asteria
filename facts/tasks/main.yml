@@ -2,10 +2,15 @@
 
 - name: setup
 
+  when: module_setup is not defined
+     or module_setup is none
+     or not module_setup
+     or facts_refresh
+
   setup:
 
   tags:
     - asteria
-    - shared
+    - facts
 
 ###################################################################################################

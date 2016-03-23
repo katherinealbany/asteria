@@ -5,7 +5,7 @@ consul_server_word: consul
 ###################################################################################################
 
 consul_server_user: '{{ consul_server_word }}'
-consul_server_home: '{{ shared_home }}/{{ consul_server_user }}'
+consul_server_home: '{{ facts_home }}/{{ consul_server_user }}'
 
 ###################################################################################################
 
@@ -28,8 +28,8 @@ consul_server_version : '{{ consul_server_major }}.{{ consul_server_minor }}.{{ 
 
 ###################################################################################################
 
-consul_server_platform    : '{{ shared_system }}'
-consul_server_architecture: '{{ shared_architecture_mapped }}'
+consul_server_platform    : '{{ facts_system }}'
+consul_server_architecture: '{{ facts_architecture_mapped }}'
 
 ###################################################################################################
 

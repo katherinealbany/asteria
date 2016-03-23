@@ -2,7 +2,7 @@
 
 dependencies:
 
-  - { role: asteria/shared }
+  - role: asteria/facts
 
   - { role: asteria/user,
       user_name: '{{ consul_server_user }}' ,

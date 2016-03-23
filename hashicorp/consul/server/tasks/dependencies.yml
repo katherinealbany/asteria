@@ -2,7 +2,7 @@
 
 - name: dependencies | debian
 
-  when: shared_os_family == 'debian'
+  when: facts_os_family == 'debian'
 
   with_items: consul_server_dependencies
 
@@ -15,7 +15,7 @@
 
 - name: dependencies | redhat
 
-  when: shared_os_family == 'redhat'
+  when: facts_os_family == 'redhat'
 
   with_items: consul_server_dependencies
 

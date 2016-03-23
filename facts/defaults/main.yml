@@ -1,20 +1,24 @@
 ###################################################################################################
 
-shared_home: /home
+facts_refresh: true
 
 ###################################################################################################
 
-shared_system: '{{ ansible_system | lower }}'
+facts_home: /home
 
 ###################################################################################################
 
-shared_os_family: '{{ ansible_os_family | lower }}'
+facts_system: '{{ ansible_system | lower }}'
 
 ###################################################################################################
 
-shared_architecture        : '{{ ansible_architecture | lower }}'
-shared_architecture_mapped : '{{ shared_architecture_mapping[shared_architecture] }}'
-shared_architecture_mapping:
+facts_os_family: '{{ ansible_os_family | lower }}'
+
+###################################################################################################
+
+facts_architecture        : '{{ ansible_architecture | lower }}'
+facts_architecture_mapped : '{{ facts_architecture_mapping[facts_architecture] }}'
+facts_architecture_mapping:
 
   amd64 : x86_64
   x86_64: amd64
