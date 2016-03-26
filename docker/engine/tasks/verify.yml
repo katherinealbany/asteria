@@ -1,0 +1,34 @@
+###################################################################################################
+
+- name: verify | setup
+
+  assert:
+    that:
+
+      - module_setup is defined
+      - module_setup is not none
+      - module_setup
+
+  tags:
+    - juno
+    - docker
+    - engine
+    - verify
+
+###################################################################################################
+
+- name: verify | support
+
+  assert:
+    that:
+
+      - docker_engine_support is iterable
+      - '"{{ ansible_architecture | lower }}-{{ ansible_distribution | lower }}-{{ ansible_system | lower }}" in docker_engine_support | lower'
+
+  tags:
+    - juno
+    - docker
+    - engine
+    - verify
+
+###################################################################################################

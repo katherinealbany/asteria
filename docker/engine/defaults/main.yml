@@ -1,0 +1,56 @@
+###################################################################################################
+
+docker_engine_name: docker
+
+###################################################################################################
+
+docker_engine_support:
+
+  - x86_64-ubuntu-linux
+
+###################################################################################################
+
+docker_engine_major    : 1
+docker_engine_minor    : 10
+docker_engine_revision : 0
+docker_engine_sha256sum: a66b20423b7d849aa8ef448b98b41d18c45a30bf3fe952cc2ba4760600b18087
+
+###################################################################################################
+
+docker_engine_version: '{{ docker_engine_major }}.{{ docker_engine_minor }}.{{ docker_engine_revision }}'
+
+###################################################################################################
+
+docker_engine_filename: '{{ docker_engine_name }}-{{ docker_engine_version }}'
+
+###################################################################################################
+
+docker_engine_src_base: https://get.docker.com/builds
+docker_engine_src_arch: '{{ ansible_system }}/{{ ansible_architecture }}'
+docker_engine_src_url : '{{ docker_engine_src_base }}/{{ docker_engine_src_arch }}/{{ docker_engine_filename }}'
+
+###################################################################################################
+
+docker_engine_dest_base_path: /usr/local/bin
+docker_engine_dest_base_mode: '0755'
+docker_engine_dest_base_owner: root
+docker_engine_dest_base_group: root
+
+docker_engine_dest_path: '{{ docker_engine_dest_base_path }}/{{ docker_engine_filename }}'
+docker_engine_dest_mode: '0755'
+docker_engine_dest_owner: root
+docker_engine_dest_group: root
+
+docker_engine_link_base_path: /bin
+docker_engine_link_base_mode: '0755'
+docker_engine_link_base_owner: root
+docker_engine_link_base_group: root
+
+docker_engine_link_name: '{{ docker_engine_name }}'
+docker_engine_link_path: '{{ docker_engine_link_base_path }}/{{ docker_engine_link_name }}'
+
+###################################################################################################
+
+docker_engine_process_control: systemd
+
+###################################################################################################
