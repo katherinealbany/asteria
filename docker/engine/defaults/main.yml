@@ -1,6 +1,6 @@
 ###################################################################################################
 
-docker_engine_name: docker
+docker_engine_word: docker
 
 ###################################################################################################
 
@@ -21,7 +21,7 @@ docker_engine_version: '{{ docker_engine_major }}.{{ docker_engine_minor }}.{{ d
 
 ###################################################################################################
 
-docker_engine_filename: '{{ docker_engine_name }}-{{ docker_engine_version }}'
+docker_engine_filename: '{{ docker_engine_word }}-{{ docker_engine_version }}'
 
 ###################################################################################################
 
@@ -46,7 +46,7 @@ docker_engine_link_base_mode: '0755'
 docker_engine_link_base_owner: root
 docker_engine_link_base_group: root
 
-docker_engine_link_name: '{{ docker_engine_name }}'
+docker_engine_link_name: '{{ docker_engine_word }}'
 docker_engine_link_path: '{{ docker_engine_link_base_path }}/{{ docker_engine_link_name }}'
 
 ###################################################################################################
