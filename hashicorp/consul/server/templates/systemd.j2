@@ -1,0 +1,11 @@
+[Unit]
+After=network.target
+
+[Service]
+ExecStart={{ consul_server_bin_path }} agent -config-dir={{ consul_server_config_base }}
+#ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

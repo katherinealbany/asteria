@@ -1,0 +1,37 @@
+###################################################################################################
+
+- name: systemd | import
+
+  include_vars: systemd
+
+###################################################################################################
+
+- name: systemd | configure
+
+  template: src={{ consul_server_systemd_config_src  }}
+           dest={{ consul_server_systemd_config_dest }}
+           mode={{ consul_server_systemd_config_mode }}
+
+  register: configure
+
+###################################################################################################
+
+- name: systemd | reload
+
+  when: configure.changed
+
+  command: systemctl daemon-reload
+
+###################################################################################################
+
+- name: systemd | enable
+
+  command: systemctl enable {{ consul_server_systemd_config_name }}
+
+###################################################################################################
+
+- name: systemd | start
+
+  command: systemctl start {{ consul_server_systemd_config_name }}
+
+###################################################################################################

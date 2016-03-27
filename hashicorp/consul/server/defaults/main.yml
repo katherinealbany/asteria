@@ -65,3 +65,7 @@ consul_server_config_src : '{{ consul_server_config_file }}.j2'
 consul_server_config_dest: '{{ consul_server_config_base }}/{{ consul_server_config_file }}'
 
 ###################################################################################################
+
+consul_server_process_control: systemd
+
+###################################################################################################

@@ -1,0 +1,9 @@
+###################################################################################################
+
+consul_server_systemd_config_src : systemd.j2
+consul_server_systemd_config_base: /etc/systemd/system
+consul_server_systemd_config_name: '{{ consul_server_word }}.service'
+consul_server_systemd_config_dest: '{{ consul_server_systemd_config_base }}/{{ consul_server_systemd_config_name }}'
+consul_server_systemd_config_mode: '0644'
+
+###################################################################################################
