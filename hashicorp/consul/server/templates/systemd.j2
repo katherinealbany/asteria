@@ -4,8 +4,9 @@ After=network.target
 [Service]
 User={{ consul_server_user }}
 ExecStart={{ consul_server_bin_path }} agent -config-dir={{ consul_server_config_base }}
-#ExecReload=/bin/kill -HUP $MAINPID
+ExecReload={{ consul_server_bin_path }} reload
 KillMode=process
+KillSignal=SIGINT
 Restart=on-failure
 
 [Install]
