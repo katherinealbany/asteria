@@ -4,6 +4,10 @@ consul_server_word: consul
 
 ###################################################################################################
 
+consul_server_inventory_group: consul-server-nodes
+
+###################################################################################################
+
 consul_server_user: '{{ consul_server_word }}'
 consul_server_home: '{{ facts_home }}/{{ consul_server_user }}'
 

@@ -3,5 +3,7 @@
   "data_dir": "{{ consul_server_data_base }}",
   "node_name": "{{ ansible_fqdn }}",
   "bind_addr": "{{ ansible_default_ipv4.address }}",
-  "datacenter": "dc1"
+  "datacenter": "dc1",
+  "retry_join": [ {% for entry in groups[consul_server_inventory_group] %}"{{ hostvars[entry]['ansible_default_ipv4']['address'] }}"{% if not loop.last %}, {% endif %}{% endfor %} ],
+  "bootstrap_expect": {{ groups[consul_server_inventory_group] | count }}
 }
