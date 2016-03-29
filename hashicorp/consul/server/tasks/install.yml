@@ -8,13 +8,31 @@
 
 ###################################################################################################
 
+- name: install | stat
+
+  stat: path={{ consul_server_bin_path }}
+
+  register: stat
+
+###################################################################################################
+
+- name: install | override
+
+  set_fact:
+    extract: '{% if download.changed or not stat.stat.exists %}true{% else %}false{% endif %}'
+
+###################################################################################################
+
 - name: install | extract
+
+  when: extract
 
   sudo_user: '{{ consul_server_user }}'
 
   unarchive: src={{ consul_server_archive_dest_path }}
             dest={{ consul_server_install_base      }}
-         creates={{ consul_server_bin_path          }}
             copy=no
+
+  register: install
 
 ###################################################################################################

@@ -32,7 +32,8 @@
 
 - name: systemd | restart
 
-  when: config.changed
+  when: install.changed
+     or config.changed
      or systemd.changed
 
   command: systemctl restart {{ consul_server_systemd_config_name }}

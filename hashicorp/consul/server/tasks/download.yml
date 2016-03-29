@@ -16,4 +16,6 @@
      sha256sum={{ consul_server_archive_sha256sum }}
           dest={{ consul_server_archive_dest_path }}
 
+  register: download
+
 ###################################################################################################
