@@ -1,4 +1,5 @@
 {
+  "ui"              : {% if consul_server_ui %}true{% else %}false{% endif %},
   "server"          : true,
   "data_dir"        : "{{ consul_server_data_base      }}",
 {% if consul_server_interface == 'default' %}
