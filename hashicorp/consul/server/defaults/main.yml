@@ -5,9 +5,14 @@ consul_server_word: consul
 ###################################################################################################
 
 consul_server_ui: true
-consul_server_interface: default
 consul_server_log_level: info
 consul_server_datacenter: dc1
+
+consul_server_cluster_interface: default
+consul_server_cluster_address  : "{% if consul_server_cluster_interface == 'default' %}{{ ansible_default_ipv4.address }}{% else %}{{ hostvars[inventory_hostname]['ansible_' + consul_server_cluster_interface]['ipv4']['address'] }}{% endif %}"
+
+consul_server_client_interface: default
+consul_server_client_address  : "{% if consul_server_client_interface == 'default' %}{{ ansible_default_ipv4.address }}{% else %}{{ hostvars[inventory_hostname]['ansible_' + consul_server_client_interface]['ipv4']['address'] }}{% endif %}"
 
 ###################################################################################################
 

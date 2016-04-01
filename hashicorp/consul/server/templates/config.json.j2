@@ -1,18 +1,15 @@
 {
   "ui"              : {% if consul_server_ui %}true{% else %}false{% endif %},
   "server"          : true,
-  "data_dir"        : "{{ consul_server_data_base      }}",
-{% if consul_server_interface == 'default' %}
-  "bind_addr"       : "{{ ansible_default_ipv4.address }}",
-{% else %}
-  "bind_addr"       : "{{ hostvars[inventory_hostname]['ansible_' + consul_server_interface]['ipv4']['address'] }}",
-{% endif %}
-  "node_name"       : "{{ ansible_fqdn                 }}",
-  "datacenter"      : "{{ consul_server_datacenter     }}",
-{% if consul_server_interface == 'default' %}
+  "data_dir"        : "{{ consul_server_data_base       }}",
+  "bind_addr"       : "{{ consul_server_cluster_address }}",
+  "node_name"       : "{{ ansible_fqdn                  }}",
+  "datacenter"      : "{{ consul_server_datacenter      }}",
+{% if consul_server_cluster_interface == 'default' %}
   "retry_join"      : [ {% for entry in groups[consul_server_inventory_group] %}"{{ hostvars[entry]['ansible_default_ipv4']['address'] }}"{% if not loop.last %}, {% endif %}{% endfor %} ],
 {% else %}
-  "retry_join"      : [ {% for entry in groups[consul_server_inventory_group] %}"{{ hostvars[entry]['ansible_' + consul_server_interface]['ipv4']['address'] }}"{% if not loop.last %}, {% endif %}{% endfor %} ],
+  "retry_join"      : [ {% for entry in groups[consul_server_inventory_group] %}"{{ hostvars[entry]['ansible_' + consul_server_cluster_interface]['ipv4']['address'] }}"{% if not loop.last %}, {% endif %}{% endfor %} ],
 {% endif %}
+  "client_addr"     : "{{ consul_server_client_address }}",
   "bootstrap_expect": {{ groups[consul_server_inventory_group] | count }}
 }
