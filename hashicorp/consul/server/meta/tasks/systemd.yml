@@ -26,7 +26,7 @@
 
 - name: systemd | enable
 
-  command: systemctl enable {{ consul_server_systemd_config_name }}
+  service: name={{ consul_server_systemd_config_name }} enabled=true
 
 ###################################################################################################
 
@@ -36,12 +36,12 @@
      or config.changed
      or systemd.changed
 
-  command: systemctl restart {{ consul_server_systemd_config_name }}
+  service: name={{ consul_server_systemd_config_name }} state=restarted
 
 ###################################################################################################
 
 - name: systemd | start
 
-  command: systemctl start {{ consul_server_systemd_config_name }}
+  service: name={{ consul_server_systemd_config_name }} state=started
 
 ###################################################################################################
