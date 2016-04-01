@@ -6,6 +6,7 @@ consul_server_word: consul
 
 consul_server_ui: true
 consul_server_interface: default
+consul_server_log_level: info
 consul_server_datacenter: dc1
 
 ###################################################################################################
