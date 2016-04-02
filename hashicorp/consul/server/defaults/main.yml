@@ -14,6 +14,27 @@ consul_server_cluster_address  : "{% if consul_server_cluster_interface == 'defa
 consul_server_client_interface: default
 consul_server_client_address  : "{% if consul_server_client_interface == 'default' %}{{ ansible_default_ipv4.address }}{% else %}{{ hostvars[inventory_hostname]['ansible_' + consul_server_client_interface]['ipv4']['address'] }}{% endif %}"
 
+consul_server_cluster_rpc_port: 8300
+consul_server_serf_lan_port   : 8301
+consul_server_serf_wan_port   : 8302
+consul_server_client_rpc_port : 8400
+consul_server_http_port       : 8500
+#consul_server_https_port     : -1
+consul_server_dns_port        : 8600
+
+consul_server_firewall:
+  tcp:
+    - '{{ consul_server_cluster_rpc_port }}'
+    - '{{ consul_server_serf_lan_port    }}'
+    - '{{ consul_server_serf_wan_port    }}'
+    - '{{ consul_server_client_rpc_port  }}'
+    - '{{ consul_server_http_port        }}'
+    - '{{ consul_server_dns_port         }}'
+  udp:
+    - '{{ consul_server_serf_lan_port    }}'
+    - '{{ consul_server_serf_wan_port    }}'
+    - '{{ consul_server_dns_port         }}'
+
 ###################################################################################################
 
 consul_server_inventory_group: consul-server-nodes

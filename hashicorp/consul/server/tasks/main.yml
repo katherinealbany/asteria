@@ -89,6 +89,34 @@
 
 ###################################################################################################
 
+- name: firewall | TCP
+
+  with_items: consul_server_firewall.tcp
+
+  ufw: port={{ item }} proto=tcp rule=allow
+
+  tags:
+    - asteria
+    - hashicorp
+    - consul
+    - server
+
+###################################################################################################
+
+- name: firewall | UDP
+
+  with_items: consul_server_firewall.udp
+
+  ufw: port={{ item }} proto=udp rule=allow
+
+  tags:
+    - asteria
+    - hashicorp
+    - consul
+    - server
+
+###################################################################################################
+
 - include: systemd.yml
 
   when: consul_server_process_control == 'systemd'
