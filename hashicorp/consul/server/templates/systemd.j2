@@ -9,5 +9,10 @@ KillMode=process
 KillSignal=SIGINT
 Restart=on-failure
 
+IOSchedulingClass=best-effort
+IOSchedulingPriority=0
+
+ProtectSystem=full
+
 [Install]
 WantedBy=multi-user.target
