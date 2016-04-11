@@ -93,6 +93,8 @@
 
   with_items: consul_server_firewall.tcp
 
+  when: '{{ item }} != {{ consul_server_port_disabled }}'
+
   ufw: port={{ item }} proto=tcp rule=allow
 
   tags:

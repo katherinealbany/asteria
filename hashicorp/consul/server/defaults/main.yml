@@ -4,6 +4,10 @@ consul_server_word: consul
 
 ###################################################################################################
 
+consul_server_port_disabled: -1
+
+###################################################################################################
+
 consul_server_ui: true
 consul_server_log_level: info
 consul_server_datacenter: dc1
@@ -19,7 +23,7 @@ consul_server_serf_lan_port   : 8301
 consul_server_serf_wan_port   : 8302
 consul_server_client_rpc_port : 8400
 consul_server_http_port       : 8500
-#consul_server_https_port     : -1
+consul_server_https_port      : '{{ consul_server_port_disabled }}'
 consul_server_dns_port        : 8600
 
 consul_server_firewall:
@@ -29,6 +33,7 @@ consul_server_firewall:
     - '{{ consul_server_serf_wan_port    }}'
     - '{{ consul_server_client_rpc_port  }}'
     - '{{ consul_server_http_port        }}'
+    - '{{ consul_server_https_port       }}'
     - '{{ consul_server_dns_port         }}'
   udp:
     - '{{ consul_server_serf_lan_port    }}'

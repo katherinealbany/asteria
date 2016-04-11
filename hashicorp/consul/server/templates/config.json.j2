@@ -12,5 +12,14 @@
 {% endif %}
   "client_addr"     : "{{ consul_server_client_address }}",
   "log_level"       : "{{ consul_server_log_level      }}",
-  "bootstrap_expect": {{ groups[consul_server_inventory_group] | count }}
+  "bootstrap_expect": {{ groups[consul_server_inventory_group] | count }},
+  "ports"     : {
+    "server"  : {{ consul_server_cluster_rpc_port }},
+    "serf_lan": {{ consul_server_serf_lan_port    }},
+    "serf_wan": {{ consul_server_serf_wan_port    }},
+    "rpc"     : {{ consul_server_client_rpc_port  }},
+    "http"    : {{ consul_server_http_port        }},
+    "https"   : {{ consul_server_https_port       }},
+    "dns"     : {{ consul_server_dns_port         }}
+  }
 }
