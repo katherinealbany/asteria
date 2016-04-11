@@ -11,5 +11,6 @@
   "retry_join"      : [ {% for entry in groups[consul_server_inventory_group] %}"{{ hostvars[entry]['ansible_' + consul_server_cluster_interface]['ipv4']['address'] }}"{% if not loop.last %}, {% endif %}{% endfor %} ],
 {% endif %}
   "client_addr"     : "{{ consul_server_client_address }}",
+  "log_level"       : "{{ consul_server_log_level      }}",
   "bootstrap_expect": {{ groups[consul_server_inventory_group] | count }}
 }
