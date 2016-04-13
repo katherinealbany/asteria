@@ -5,13 +5,6 @@
   assert:
     that:
 
-      - docker_engine_support is iterable
-      - '"{{ ansible_architecture | lower }}-{{ ansible_distribution | lower }}-{{ ansible_system | lower }}" in docker_engine_support | lower'
-
-  tags:
-    - asteria
-    - docker
-    - engine
-    - verify
+      - '"{{ docker_engine_platform }}-{{ docker_engine_architecture }}" in docker_engine_support'
 
 ###################################################################################################

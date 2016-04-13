@@ -4,12 +4,6 @@
 
   include_vars: systemd
 
-  tags:
-    - asteria
-    - docker
-    - engine
-    - systemd
-
 ###################################################################################################
 
 - name: systemd | configure
@@ -20,12 +14,6 @@
 
   register: configure
 
-  tags:
-    - asteria
-    - docker
-    - engine
-    - systemd
-
 ###################################################################################################
 
 - name: systemd | reload
@@ -34,34 +22,16 @@
 
   command: systemctl daemon-reload
 
-  tags:
-    - asteria
-    - docker
-    - engine
-    - systemd
-
 ###################################################################################################
 
 - name: systemd | enable
 
   command: systemctl enable {{ docker_engine_systemd_config_name }}
 
-  tags:
-    - asteria
-    - docker
-    - engine
-    - systemd
-
 ###################################################################################################
 
 - name: systemd | start
 
   command: systemctl start {{ docker_engine_systemd_config_name }}
-
-  tags:
-    - asteria
-    - docker
-    - engine
-    - systemd
 
 ###################################################################################################

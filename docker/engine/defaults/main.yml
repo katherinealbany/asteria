@@ -6,7 +6,12 @@ docker_engine_word: docker
 
 docker_engine_support:
 
-  - x86_64-ubuntu-linux
+  - linux-x86_64
+
+###################################################################################################
+
+docker_engine_platform    : '{{ facts_system }}'
+docker_engine_architecture: '{{ facts_architecture }}'
 
 ###################################################################################################
 
@@ -26,7 +31,7 @@ docker_engine_filename: '{{ docker_engine_word }}-{{ docker_engine_version }}'
 ###################################################################################################
 
 docker_engine_src_base: https://get.docker.com/builds
-docker_engine_src_arch: '{{ ansible_system }}/{{ ansible_architecture }}'
+docker_engine_src_arch: '{{ docker_engine_platform }}/{{ docker_engine_architecture }}'
 docker_engine_src_url : '{{ docker_engine_src_base }}/{{ docker_engine_src_arch }}/{{ docker_engine_filename }}'
 
 ###################################################################################################
