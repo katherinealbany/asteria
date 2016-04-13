@@ -9,7 +9,7 @@
       - '"{{ ansible_architecture | lower }}-{{ ansible_distribution | lower }}-{{ ansible_system | lower }}" in docker_engine_support | lower'
 
   tags:
-    - juno
+    - asteria
     - docker
     - engine
     - verify

@@ -3,7 +3,7 @@
 - include: verify.yml
 
   tags:
-    - juno
+    - asteria
     - docker
     - engine
     - verify
@@ -19,7 +19,7 @@
        state=directory
 
   tags:
-    - juno
+    - asteria
     - docker
     - engine
 
@@ -37,7 +37,7 @@
   register: download
 
   tags:
-    - juno
+    - asteria
     - docker
     - engine
 
@@ -52,7 +52,7 @@
        state=directory
 
   tags:
-    - juno
+    - asteria
     - docker
     - engine
 
@@ -65,7 +65,7 @@
        state=link
 
   tags:
-    - juno
+    - asteria
     - docker
     - engine
 
@@ -76,7 +76,7 @@
   when: docker_engine_process_control == 'systemd'
 
   tags:
-    - juno
+    - asteria
     - docker
     - engine
     - systemd
