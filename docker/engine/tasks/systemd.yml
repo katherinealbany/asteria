@@ -12,13 +12,13 @@
            dest={{ docker_engine_systemd_config_dest }}
            mode={{ docker_engine_systemd_config_mode }}
 
-  register: systemd
+  register: systemd_unit
 
 ###################################################################################################
 
 - name: systemd | reload
 
-  when: systemd.changed
+  when: systemd_unit.changed
 
   command: systemctl daemon-reload
 
@@ -32,7 +32,7 @@
 
 - name: systemd | restart
 
-  when: systemd.changed
+  when: systemd_unit.changed
 
   service: name={{ docker_engine_systemd_config_name }} state=restarted
 
