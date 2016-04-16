@@ -99,9 +99,11 @@
 
 ###################################################################################################
 
-- include: systemd.yml
+- name: systemd
 
   when: docker_engine_process_control == 'systemd'
+
+  include: systemd.yml
 
   tags:
     - asteria
