@@ -6,6 +6,16 @@
 
 ###################################################################################################
 
+- name: systemd | socket | configure
+
+  template: src={{ docker_engine_systemd_socket_config_src  }}
+           dest={{ docker_engine_systemd_socket_config_dest }}
+           mode={{ docker_engine_systemd_socket_config_mode }}
+
+  register: systemd_socket
+
+###################################################################################################
+
 - name: systemd | service | configure
 
   template: src={{ docker_engine_systemd_service_config_src  }}
@@ -18,9 +28,16 @@
 
 - name: systemd | reload
 
-  when: systemd_service.changed
+  when: systemd_socket.changed
+     or systemd_service.changed
 
   command: systemctl daemon-reload
+
+###################################################################################################
+
+- name: systemd | socket | enable
+
+  service: name={{ docker_engine_systemd_socket_name }} enabled=true
 
 ###################################################################################################
 
@@ -33,6 +50,7 @@
 - name: systemd | restart
 
   when: configuration.changed
+     or systemd_socket.changed
      or systemd_service.changed
 
   service: name={{ docker_engine_systemd_service_name }} state=restarted

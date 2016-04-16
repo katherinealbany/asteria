@@ -5,22 +5,21 @@
 ###################################################################################################
 
 [Unit]
-Requires={{ docker_engine_systemd_socket_name }}
-After=network.target {{ docker_engine_systemd_socket_name }}
+PartOf={{ docker_engine_systemd_service_name }}
 
 ###################################################################################################
 
-[Service]
-ExecStart={{ docker_engine_link_path }} daemon --config-file={{ docker_engine_config_dest }}
-#ExecReload=/bin/kill -HUP $MAINPID
-KillMode=process
-Restart=on-failure
+[Socket]
+ListenStream=/var/run/docker.sock
+SocketMode=0660
+SocketUser=root
+#SocketGroup=docker
 
 ###################################################################################################
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=sockets.target
 
 ###################################################################################################
 
-# https://github.com/docker/docker/blob/master/contrib/init/systemd/docker.service
+# https://github.com/docker/docker/blob/master/contrib/init/systemd/docker.socket
