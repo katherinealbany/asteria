@@ -41,23 +41,37 @@
 
 ###################################################################################################
 
+- name: systemd | socket | restart
+
+  when: configuration.changed
+     or systemd_socket.changed
+
+  service: name={{ docker_engine_systemd_socket_name }} state=restarted
+
+###################################################################################################
+
+- name: systemd | socket | start
+
+  service: name={{ docker_engine_systemd_socket_name }} state=started
+
+###################################################################################################
+
 - name: systemd | service | enable
 
   service: name={{ docker_engine_systemd_service_name }} enabled=true
 
 ###################################################################################################
 
-- name: systemd | restart
+- name: systemd | service | restart
 
   when: configuration.changed
-     or systemd_socket.changed
      or systemd_service.changed
 
   service: name={{ docker_engine_systemd_service_name }} state=restarted
 
 ###################################################################################################
 
-- name: systemd | start
+- name: systemd | service | start
 
   service: name={{ docker_engine_systemd_service_name }} state=started
 
