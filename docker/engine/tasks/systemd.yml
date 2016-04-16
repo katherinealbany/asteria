@@ -8,9 +8,9 @@
 
 - name: systemd | service | configure
 
-  template: src={{ docker_engine_systemd_config_src  }}
-           dest={{ docker_engine_systemd_config_dest }}
-           mode={{ docker_engine_systemd_config_mode }}
+  template: src={{ docker_engine_systemd_service_config_src  }}
+           dest={{ docker_engine_systemd_service_config_dest }}
+           mode={{ docker_engine_systemd_service_config_mode }}
 
   register: systemd_service
 
@@ -26,7 +26,7 @@
 
 - name: systemd | service | enable
 
-  service: name={{ docker_engine_systemd_config_name }} enabled=true
+  service: name={{ docker_engine_systemd_service_name }} enabled=true
 
 ###################################################################################################
 
@@ -35,12 +35,12 @@
   when: configuration.changed
      or systemd_service.changed
 
-  service: name={{ docker_engine_systemd_config_name }} state=restarted
+  service: name={{ docker_engine_systemd_service_name }} state=restarted
 
 ###################################################################################################
 
 - name: systemd | start
 
-  service: name={{ docker_engine_systemd_config_name }} state=started
+  service: name={{ docker_engine_systemd_service_name }} state=started
 
 ###################################################################################################
