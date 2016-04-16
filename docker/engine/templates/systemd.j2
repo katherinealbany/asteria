@@ -2,7 +2,7 @@
 After=network.target
 
 [Service]
-ExecStart={{ docker_engine_link_path }} daemon
+ExecStart={{ docker_engine_link_path }} daemon --config-file={{ docker_engine_config_dest }}
 #ExecReload=/bin/kill -HUP $MAINPID
 KillMode=process
 Restart=on-failure

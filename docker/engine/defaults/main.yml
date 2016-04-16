@@ -36,25 +36,37 @@ docker_engine_src_url : '{{ docker_engine_src_base }}/{{ docker_engine_src_arch 
 
 ###################################################################################################
 
-docker_engine_dest_base_path: /usr/local/bin
-docker_engine_dest_base_mode: '0755'
+docker_engine_dest_base_path : /usr/local/bin
+docker_engine_dest_base_mode : '0755'
 docker_engine_dest_base_owner: root
 docker_engine_dest_base_group: root
 
-docker_engine_dest_path: '{{ docker_engine_dest_base_path }}/{{ docker_engine_filename }}'
-docker_engine_dest_mode: '0755'
+docker_engine_dest_path : '{{ docker_engine_dest_base_path }}/{{ docker_engine_filename }}'
+docker_engine_dest_mode : '0755'
 docker_engine_dest_owner: root
 docker_engine_dest_group: root
 
 ###################################################################################################
 
-docker_engine_link_base_path: /bin
-docker_engine_link_base_mode: '0755'
+docker_engine_link_base_path : /usr/bin
+docker_engine_link_base_mode : '0755'
 docker_engine_link_base_owner: root
 docker_engine_link_base_group: root
 
 docker_engine_link_name: '{{ docker_engine_word }}'
 docker_engine_link_path: '{{ docker_engine_link_base_path }}/{{ docker_engine_link_name }}'
+
+###################################################################################################
+
+docker_engine_config_base_path : /etc/{{ docker_engine_word }}
+docker_engine_config_base_mode : '0755'
+docker_engine_config_base_owner: root
+docker_engine_config_base_group: root
+
+docker_engine_config_name: config.json
+docker_engine_config_src : '{{ docker_engine_config_name }}.j2'
+docker_engine_config_dest: '{{ docker_engine_config_base_path }}/{{ docker_engine_config_name }}'
+docker_engine_config_mode: '0644'
 
 ###################################################################################################
 
