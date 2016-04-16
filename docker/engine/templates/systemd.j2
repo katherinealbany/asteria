@@ -1,5 +1,13 @@
+###
+### {{ ansible_managed }}
+###
+
+###################################################################################################
+
 [Unit]
 After=network.target
+
+###################################################################################################
 
 [Service]
 ExecStart={{ docker_engine_link_path }} daemon --config-file={{ docker_engine_config_dest }}
@@ -7,5 +15,12 @@ ExecStart={{ docker_engine_link_path }} daemon --config-file={{ docker_engine_co
 KillMode=process
 Restart=on-failure
 
+###################################################################################################
+
 [Install]
 WantedBy=multi-user.target
+
+###################################################################################################
+
+# https://github.com/docker/docker/blob/master/contrib/init/systemd/docker.service
+# https://github.com/docker/docker/blob/master/contrib/init/systemd/docker.socket
