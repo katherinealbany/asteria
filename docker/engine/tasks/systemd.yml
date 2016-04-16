@@ -6,25 +6,25 @@
 
 ###################################################################################################
 
-- name: systemd | configure
+- name: systemd | service | configure
 
   template: src={{ docker_engine_systemd_config_src  }}
            dest={{ docker_engine_systemd_config_dest }}
            mode={{ docker_engine_systemd_config_mode }}
 
-  register: systemd_configure
+  register: systemd_service
 
 ###################################################################################################
 
 - name: systemd | reload
 
-  when: systemd_configure.changed
+  when: systemd_service.changed
 
   command: systemctl daemon-reload
 
 ###################################################################################################
 
-- name: systemd | enable
+- name: systemd | service | enable
 
   service: name={{ docker_engine_systemd_config_name }} enabled=true
 
@@ -32,7 +32,8 @@
 
 - name: systemd | restart
 
-  when: systemd_configure.changed
+  when: configuration.changed
+     or systemd_service.changed
 
   service: name={{ docker_engine_systemd_config_name }} state=restarted
 

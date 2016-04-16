@@ -92,6 +92,8 @@
            dest={{ docker_engine_config_dest }}
            mode={{ docker_engine_config_mode }}
 
+  register: configuration
+
   tags:
     - asteria
     - docker
