@@ -70,6 +70,13 @@ docker_engine_config_mode: '0644'
 
 ###################################################################################################
 
+docker_engine_unix_socket_path : /var/run/docker.sock
+docker_engine_unix_socket_mode : '0660'
+docker_engine_unix_socket_owner: root
+docker_engine_unix_socket_group: root
+
+###################################################################################################
+
 docker_engine_process_control: systemd
 
 ###################################################################################################

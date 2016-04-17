@@ -1,9 +1,7 @@
 ###################################################################################################
 
-docker_engine_systemd_socket_name : '{{ docker_engine_word }}.socket'
-docker_engine_systemd_service_name: '{{ docker_engine_word }}.service'
-
-###################################################################################################
+docker_engine_systemd_socket_name    : '{{ docker_engine_word }}.socket'
+docker_engine_systemd_socket_wantedby: sockets.target
 
 docker_engine_systemd_socket_config_src : systemd/socket.j2
 docker_engine_systemd_socket_config_base: /etc/systemd/system
@@ -11,6 +9,8 @@ docker_engine_systemd_socket_config_dest: '{{ docker_engine_systemd_socket_confi
 docker_engine_systemd_socket_config_mode: '0644'
 
 ###################################################################################################
+
+docker_engine_systemd_service_name: '{{ docker_engine_word }}.service'
 
 docker_engine_systemd_service_config_src : systemd/service.j2
 docker_engine_systemd_service_config_base: /etc/systemd/system

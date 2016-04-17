@@ -11,10 +11,9 @@ After=network.target {{ docker_engine_systemd_socket_name }}
 ###################################################################################################
 
 [Service]
-ExecStart={{ docker_engine_link_path }} daemon --config-file={{ docker_engine_config_dest }}
-#ExecReload=/bin/kill -HUP $MAINPID
-KillMode=process
+ExecStart={{ docker_engine_link_path }} daemon --host=fd:// --config-file={{ docker_engine_config_dest }}
 Restart=on-failure
+KillMode=process
 
 ###################################################################################################
 

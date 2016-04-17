@@ -10,16 +10,15 @@ PartOf={{ docker_engine_systemd_service_name }}
 ###################################################################################################
 
 [Socket]
-ListenStream=/var/run/docker.sock
-SocketMode=0660
-SocketUser=root
-#SocketGroup=docker
+Service={{      docker_engine_systemd_service_name }}
+SocketMode={{   docker_engine_unix_socket_mode     }}
+SocketUser={{   docker_engine_unix_socket_owner    }}
+SocketGroup={{  docker_engine_unix_socket_group    }}
+ListenStream={{ docker_engine_unix_socket_path     }}
 
 ###################################################################################################
 
 [Install]
-WantedBy=sockets.target
+WantedBy={{ docker_engine_systemd_socket_wantedby }}
 
 ###################################################################################################
-
-# https://github.com/docker/docker/blob/master/contrib/init/systemd/docker.socket
