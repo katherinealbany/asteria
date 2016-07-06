@@ -21,6 +21,8 @@
 
 - name: group
 
+  become: true
+
   group: name={{ user_group }}
 
   tags:
@@ -30,6 +32,8 @@
 ###################################################################################################
 
 - name: user
+
+  become: true
 
   user:  name={{ user_name  }}
         group={{ user_group }}
@@ -67,6 +71,8 @@
 ###################################################################################################
 
 - name: home
+
+  become: true
 
   file: dest={{ user_home  }}
        owner={{ user_name  }}
